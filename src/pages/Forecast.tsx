@@ -56,27 +56,6 @@ function Forecast() {
                         </div>
                     </ div> 
                     )
-
-                      {/* <ul className="mt-4" key={index}>
-                        <li className="row col-md-12 p-1">
-                          <span className="col-md-4 text-left">
-                            {dayjs(item.dt).format('dddd')}
-                          </span>
-                          {item.weather && 
-                                <span className="col-md-4 d-flex items-center justify-content-center rounded-circle border-2">
-                                <img
-                                className="col-md-4"
-                                    src={`https://openweathermap.org/img/wn/${item.weather[0]?.icon}@2x.png`}
-                                    alt="/"
-                                />
-                                </span>
-                            }
-                          <span className="col-md-4 text-right">
-                            {item?.temp?.min}&deg; / {item?.temp?.max}&deg;
-                          </span>
-                        </li>
-                      </ul> */}
-                    {/* ); */}
                   })
               )
 
