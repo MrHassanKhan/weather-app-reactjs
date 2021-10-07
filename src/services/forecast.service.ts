@@ -2,7 +2,7 @@
 import axios from "axios";
 import { ForecastResponseObject } from "../dtos/forecast.dto";
 
-const API_URL = "http://api.openweathermap.org/data/2.5/forecast/daily";
+const API_URL = "https://api.openweathermap.org/data/2.5/forecast/daily";
 const WeatherKey = '093c63d1d6dd2f0f77c6f14d91a19042' || process.env.WEATHER_KEY;
 
 
