@@ -5,9 +5,8 @@ import moment from "moment";
 
 function Forecast() {
     const state = useSelector((state: RootState) => state.forecast);
+
     const { forecast, loading, error } = state;
-
-
     return(
         <div className="d-flex col-md-8 col-sm-12 pt-12 px-4 mb-20 mx-auto text-center" style={{overflow: 'auto'}}>
             {
