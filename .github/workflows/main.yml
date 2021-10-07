@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - run: npm install
+    # - name: yarn install, build and test
+    - run: npm run build
+    - name: Archive Build
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --project weather-app-react-ba17c --only hosting
+      env: 
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
+  # deploy:
+  #   name: Deploy
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Download Build
+  #   - uses: actions/download-artifact@v2
+  #     with:
+  #       name: build
+  #       path: build
+  #   - name: Depoy to Firebase
+  #     uses: w9jds/firebase-action@master
+  #     with:
+  #       args: deploy --only hosting
+  #     env:
+  #       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
